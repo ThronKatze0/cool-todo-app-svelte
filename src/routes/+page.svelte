@@ -47,7 +47,7 @@
 
 <Modal />
 <h1 class="h1 text-center mt-8">Todo app</h1>
-<div class="flex flex-row justify-center mt-16">
+<form class="flex flex-row justify-center mt-16">
 	<input
 		class="input w-1/4"
 		title="Todo Name"
@@ -56,7 +56,7 @@
 		bind:value={inputName}
 	/>
 	<button type="submit" class="btn variant-filled ml-3" on:click={addTodo}>Submit</button>
-</div>
+</form>
 
 <div class="grid grid-cols-3 gap-5 mx-20 mt-16">
 	{#each todos as todo, i}
