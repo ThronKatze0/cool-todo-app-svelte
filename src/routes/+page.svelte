@@ -1,11 +1,6 @@
 <script lang="ts">
 	import { Modal, Toast, getModalStore, initializeStores } from '@skeletonlabs/skeleton';
-	import type {
-		ModalSettings,
-		ModalComponent,
-		ModalStore,
-		ToastStore
-	} from '@skeletonlabs/skeleton';
+	import type { ModalSettings, ModalStore, ToastStore } from '@skeletonlabs/skeleton';
 	import { getToastStore } from '@skeletonlabs/skeleton';
 	initializeStores();
 
@@ -87,10 +82,13 @@
 	function filterTodos() {
 		switch (currentFilterMode) {
 			case 'checked':
+				triggerToast('Checked todos', ToastType.SUCCESS);
 				return todos.filter((todo) => todo.checked);
 			case 'unchecked':
+				triggerToast('Unchecked todos', ToastType.SUCCESS);
 				return todos.filter((todo) => !todo.checked);
 			default:
+				triggerToast('All todos', ToastType.SUCCESS);
 				return todos;
 		}
 	}
@@ -121,6 +119,12 @@
 		<option value="checked">Checked</option>
 		<option value="unchecked">Unchecked</option>
 	</select>
+	<button
+		class="btn variant-filled ml-3"
+		on:click={() => {
+			todos = [];
+		}}>Clear</button
+	>
 </form>
 
 <div class="grid grid-cols-3 gap-5 mx-20 mt-16">
